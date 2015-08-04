@@ -1,6 +1,6 @@
 Forward2Docker
 ===
-Simple utility for auto forwarding ports from Docker container in boot2docker VM to the host.
+Utility to auto forward a port from localhost into ports on Docker containers running in a boot2docker VM.
 
 How it works?
 ---------
