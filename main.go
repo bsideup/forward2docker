@@ -64,6 +64,10 @@ func reload(client *docker.Client) {
 		for _, binding := range container.Ports {
 			_, exists := forwards[binding.PublicPort]
 			if !exists {
+				if binding.PublicPort == 0 {
+					log.Println("Will not add mapping for port 0")
+					continue
+				}
 				log.Printf("Adding port mapping for %d\n", binding.PublicPort)
 				if binding.PublicPort < 1024 {
 					log.Printf("Exposed port %d is lower than 1024 and will not work if VirtualBox is started without root privileges\n", binding.PublicPort)
