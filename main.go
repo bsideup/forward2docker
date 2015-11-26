@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"os"
 	"strconv"
 	"strings"
 
@@ -35,7 +36,13 @@ func main() {
 }
 
 func reload(client *docker.Client) {
-	machine, err := virtualbox.GetMachine("boot2docker-vm")
+	machineName := os.Getenv("DOCKER_MACHINE_NAME")
+
+	if len(machineName) == 0 {
+		machineName = "boot2docker-vm"
+	}
+
+	machine, err := virtualbox.GetMachine(machineName)
 
 	if err != nil {
 		log.Fatal(err)
