@@ -1,4 +1,4 @@
-Forward2Docker
+Forward2Docker [![Circle CI](https://circleci.com/gh/bsideup/forward2docker/tree/master.svg?style=svg)](https://circleci.com/gh/bsideup/forward2docker/tree/master)
 ===
 Utility to auto forward a port from localhost into ports on Docker containers running in a boot2docker or Docker Machine VM.
 
