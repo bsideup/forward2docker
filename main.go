@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"log"
 	"os"
 	"strconv"
@@ -13,7 +14,10 @@ import (
 
 const forward2dockerPrefix = "forward2docker-"
 
+var runOnce = flag.Bool("run-once", false, "stop execution after the first port assignment")
+
 func main() {
+	flag.Parse()
 	client, err := docker.NewClientFromEnv()
 
 	if err != nil {
@@ -22,14 +26,16 @@ func main() {
 
 	reload(client)
 
-	listener := make(chan *docker.APIEvents)
-	client.AddEventListener(listener)
-	for {
-		select {
-		case event := <-listener:
-			switch event.Status {
-			case "start", "die":
-				reload(client)
+	if !*runOnce {
+		listener := make(chan *docker.APIEvents)
+		client.AddEventListener(listener)
+		for {
+			select {
+			case event := <-listener:
+				switch event.Status {
+				case "start", "die":
+					reload(client)
+				}
 			}
 		}
 	}

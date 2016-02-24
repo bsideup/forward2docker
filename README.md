@@ -17,8 +17,9 @@ Install
 ---------
 Tool is available in two options:
 
+  1. Binaries. You can download the latest binaries from here: https://github.com/bsideup/forward2docker/releases/
   1. Go distribution. Install by running 'go get github.com/bsideup/forward2docker'
-  1. Binary download. You can download latest binaries here: https://github.com/bsideup/forward2docker/releases/
+  1. Build it yourself. See "Contributing" section
 
 Usage
 ---------
@@ -29,3 +30,14 @@ Usage
   1. Kill your container: `$ docker kill f2dtest`
   1. Ensure that port is unmapped (you should see 'Connection refused'): `$ curl http://localhost:8000`
   1. Run few more containers and verify that you can access them on localhost
+
+Configuration
+---------
+no configuration required, but you can pass `--run-once` flag to prevent forward2docker to listen for events and quit right after the first port assignment.
+
+Contributing
+---------
+GNU Make is used as a build tool. Following commands are available:
+  - `make bootstrap` - you should call it (once) before you start. Will download all dependencies
+  - `make build` - will run `go vet`, `go fmt` and compile binary for current platform
+  - `make build_all` - will compile binaries for every supported platform. All binaries will be saved to `./bin/` folder

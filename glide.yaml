@@ -1,0 +1,4 @@
+package: github.com/bsideup/forward2docker
+import:
+- package: github.com/bsideup/go-virtualbox
+- package: github.com/fsouza/go-dockerclient
