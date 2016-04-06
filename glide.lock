@@ -2,7 +2,7 @@ hash: a9d3a3174138047efe0967f6182a97c011a9bf594fef963f844c3bd0a48ea26f
 updated: 2016-02-24T07:58:20.437085+02:00
 imports:
 - name: github.com/bsideup/go-virtualbox
-  version: 4d2bec40f651431591dab0191061a7231d9d83f7
+  version: f08f715b523c7d34f39f2c5395f594f50e6a2b79
 - name: github.com/fsouza/go-dockerclient
   version: a49c8269a6899cae30da1f8a4b82e0ce945f9967
   subpackages:
